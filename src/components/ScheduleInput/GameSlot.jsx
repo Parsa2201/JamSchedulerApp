@@ -3,13 +3,11 @@ import sportTypes from "../../data/sportTypes";
 import TeamParticipants from "./TeamParticipants";
 import IndividualParticipants from "./IndividualParticipants";
 import MixedParticipants from "./MixedParticipants";
-import { hasTimeOverlap } from "../../utils/scheduleUtils";
+import "./GameSlot.css";
 
 const GameSlot = ({
   slot,
   globalIndex,
-  gameSlots,
-  updateGameSlotField,
   updateParticipant,
   updateType,
   removeGameSlot,
@@ -18,28 +16,15 @@ const GameSlot = ({
   selectedSport,
 }) => {
   const sportType = sportTypes[selectedSport];
-  const overlap = hasTimeOverlap(slot, globalIndex, gameSlots);
 
   return (
-    <div className={`game-slot ${overlap ? "overlap" : ""}`}>
-      <div className="time-group">
-        <div>
-          <label>Start Time</label>
-          <input
-            type="time"
-            value={slot.startTime}
-            onChange={(e) => updateGameSlotField(globalIndex, "startTime", e.target.value)}
-          />
-        </div>
-        <div>
-          <label>End Time</label>
-          <input
-            type="time"
-            value={slot.endTime}
-            onChange={(e) => updateGameSlotField(globalIndex, "endTime", e.target.value)}
-          />
-        </div>
+    <div className="game-slot-content">
+      {/* <div className="time-display">
+        <span>{slot.startTime} - {slot.endTime}</span>
       </div>
+      <div className="sport-display">
+        <span>{selectedSport}</span>
+      </div> */}
       {sportType === "team" && (
         <TeamParticipants
           slot={slot}
@@ -65,8 +50,8 @@ const GameSlot = ({
           players={players}
         />
       )}
-      <button className="remove-button" onClick={() => removeGameSlot(globalIndex)}>
-        ✕
+      <button className="remove-button" onClick={() => removeGameSlot(globalIndex)} aria-label="Remove Slot">
+        ✕ Remove
       </button>
     </div>
   );

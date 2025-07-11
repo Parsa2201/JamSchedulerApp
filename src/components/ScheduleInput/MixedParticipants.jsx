@@ -3,8 +3,8 @@ import React from "react";
 const MixedParticipants = ({ slot, globalIndex, updateParticipant, updateType, players }) => {
   return (
     <div className="mixed-group">
-      <div className="custom-radio">
-        <label>
+      <div className="custom-radio compact mixed-radio-group">
+        <label className="mixed-radio-label">
           <input
             type="radio"
             name={`type-${globalIndex}`}
@@ -14,7 +14,7 @@ const MixedParticipants = ({ slot, globalIndex, updateParticipant, updateType, p
           />
           Singles
         </label>
-        <label>
+        <label className="mixed-radio-label">
           <input
             type="radio"
             name={`type-${globalIndex}`}
@@ -27,10 +27,10 @@ const MixedParticipants = ({ slot, globalIndex, updateParticipant, updateType, p
       </div>
       {slot.type === "singles" && (
         <div className="participant-group">
-          <div>
-            <label>Player A</label>
+          <div className="participant-column">
+            <label className="participant-label">Player A</label>
             <select
-              className="custom-select"
+              className="custom-select compact participant-select"
               value={slot.participants.sideA || ""}
               onChange={(e) => updateParticipant(globalIndex, "sideA", e.target.value)}
             >
@@ -40,10 +40,10 @@ const MixedParticipants = ({ slot, globalIndex, updateParticipant, updateType, p
               ))}
             </select>
           </div>
-          <div>
-            <label>Player B</label>
+          <div className="participant-column">
+            <label className="participant-label">Player B</label>
             <select
-              className="custom-select"
+              className="custom-select compact participant-select"
               value={slot.participants.sideB || ""}
               onChange={(e) => updateParticipant(globalIndex, "sideB", e.target.value)}
             >
@@ -58,9 +58,9 @@ const MixedParticipants = ({ slot, globalIndex, updateParticipant, updateType, p
       {slot.type === "doubles" && (
         <div className="doubles-group">
           <div className="side-group">
-            <label>Side A - Player 1</label>
+            <label className="participant-label">Side A - P1</label>
             <select
-              className="custom-select"
+              className="custom-select compact participant-select"
               value={slot.participants.sideA[0] || ""}
               onChange={(e) => updateParticipant(globalIndex, "sideA", e.target.value, 0)}
             >
@@ -69,9 +69,9 @@ const MixedParticipants = ({ slot, globalIndex, updateParticipant, updateType, p
                 <option key={p.id} value={p.id}>{p.name}</option>
               ))}
             </select>
-            <label>Side A - Player 2</label>
+            <label className="participant-label">Side A - P2</label>
             <select
-              className="custom-select"
+              className="custom-select compact participant-select"
               value={slot.participants.sideA[1] || ""}
               onChange={(e) => updateParticipant(globalIndex, "sideA", e.target.value, 1)}
             >
@@ -82,9 +82,9 @@ const MixedParticipants = ({ slot, globalIndex, updateParticipant, updateType, p
             </select>
           </div>
           <div className="side-group">
-            <label>Side B - Player 1</label>
+            <label className="participant-label">Side B - P1</label>
             <select
-              className="custom-select"
+              className="custom-select compact participant-select"
               value={slot.participants.sideB[0] || ""}
               onChange={(e) => updateParticipant(globalIndex, "sideB", e.target.value, 0)}
             >
@@ -93,9 +93,9 @@ const MixedParticipants = ({ slot, globalIndex, updateParticipant, updateType, p
                 <option key={p.id} value={p.id}>{p.name}</option>
               ))}
             </select>
-            <label>Side B - Player 2</label>
+            <label className="participant-label">Side B - P2</label>
             <select
-              className="custom-select"
+              className="custom-select compact participant-select"
               value={slot.participants.sideB[1] || ""}
               onChange={(e) => updateParticipant(globalIndex, "sideB", e.target.value, 1)}
             >

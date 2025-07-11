@@ -15,3 +15,14 @@ export const hasTimeOverlap = (slot, index, gameSlots) => {
       slot.startTime < s.endTime
   );
 };
+
+export const timeToMinutes = (time) => {
+  const [hours, minutes] = time.split(":").map(Number);
+  return hours * 60 + minutes;
+};
+
+export const minutesToTime = (minutes) => {
+  const hours = Math.floor(minutes / 60) % 24;
+  const mins = minutes % 60;
+  return `${String(hours).padStart(2, "0")}:${String(mins).padStart(2, "0")}`;
+};

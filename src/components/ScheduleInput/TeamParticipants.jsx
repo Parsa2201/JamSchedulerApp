@@ -3,10 +3,10 @@ import React from "react";
 const TeamParticipants = ({ slot, globalIndex, updateParticipant, teams }) => {
   return (
     <div className="participant-group">
-      <div>
-        <label>Team A</label>
+      <div className="team-column">
+        <label className="team-label">Team A</label>
         <select
-          className="custom-select"
+          className="custom-select compact"
           value={slot.participants.sideA || ""}
           onChange={(e) => updateParticipant(globalIndex, "sideA", e.target.value)}
         >
@@ -16,10 +16,10 @@ const TeamParticipants = ({ slot, globalIndex, updateParticipant, teams }) => {
           ))}
         </select>
       </div>
-      <div>
-        <label>Team B</label>
+      <div className="team-column">
+        <label className="team-label">Team B</label>
         <select
-          className="custom-select"
+          className="custom-select compact"
           value={slot.participants.sideB || ""}
           onChange={(e) => updateParticipant(globalIndex, "sideB", e.target.value)}
         >

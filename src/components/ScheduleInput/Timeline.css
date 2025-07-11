@@ -1,0 +1,138 @@
+/* Timeline.css - Add the new class to your CSS file */
+.timeline-container {
+  padding: 16px 0;
+  width: 100%;
+  overflow-x: auto;
+  background: #f3f4f6;
+  border-radius: 8px;
+}
+
+.timeline-track {
+  position: relative;
+  width: 100%;
+  overflow-x: auto; /* Allows horizontal scrolling if content exceeds width */
+  padding-top: 32px; /* Space for the ruler */
+  min-height: 120px; /* Ensure some height for the timeline */
+  background: linear-gradient(180deg, #f9fafb 0%, #e5e7eb 100%);
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  overflow: visible;
+  padding: 20px;
+}
+
+.timeline-ruler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  display: flex;
+  align-items: flex-end;
+  background: #fff;
+  z-index: 2;
+  border-bottom: 1px solid #e0e0e0; /* Add a subtle border */
+}
+
+.timeline-ruler-hour-mark {
+  position: relative;
+  height: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0; /* Prevent ruler marks from shrinking */
+}
+
+.timeline-ruler-line {
+  width: 2px;
+  height: 18px;
+  background: #3b82f6;
+  border-radius: 1px;
+  margin-bottom: 2px;
+}
+
+.timeline-ruler-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2563eb;
+  margin-top: 0px;
+  letter-spacing: 0.5px;
+}
+
+.timeline-items {
+  position: relative;
+  min-height: 80px; /* Height for the game slots */
+}
+
+.timeline-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: #fff;
+  /* Default box-shadow and border will be overridden by .overlap if needed */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border: none;
+  transition: box-shadow 0.2s ease-in-out, border 0.2s ease-in-out; /* Smooth transition for overlap highlight */
+}
+
+/* This content will not start a drag */
+.non-draggable-content {
+  width: 100%;
+}
+
+.timeline-item.overlap {
+  box-shadow: 0 0 0 3px #ef4444; /* Red border effect for overlap */
+  border: 2px solid #ef4444;
+}
+
+.timeline-item-time {
+  font-weight: bold;
+  font-size: 1.05em;
+  margin-bottom: 2px;
+  cursor: grab; /* Indicate that this area is draggable */
+}
+
+.timeline-item-sport {
+  font-size: 0.95em;
+  color: #2563eb;
+  margin-bottom: 2px;
+}
+
+.timeline-item-conflict-indicator {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  background: #ef4444;
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.8em;
+  font-weight: bold;
+  z-index: 2;
+}
+
+@media (max-width: 700px) {
+  .timeline-track {
+    min-width: 700px;
+  }
+  .timeline-slot {
+    min-width: 40px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .timeline-track {
+    min-width: 400px;
+  }
+  .timeline-slot {
+    min-width: 30px;
+    font-size: 0.65rem;
+  }
+}
