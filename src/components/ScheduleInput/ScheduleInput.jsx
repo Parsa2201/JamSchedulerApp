@@ -48,7 +48,7 @@ const ScheduleInput = ({ teams, players }) => {
       day: selectedDay,
       ground,
       startTime: minutesToTime(slotStart),
-      endTime: minutesToTime(slotStart + 60),
+      endTime: minutesToTime(slotStart + 180),
       sport: selectedSport,
       participants: sportTypes[selectedSport] === "mixed" ? { sideA: [], sideB: [], type: "singles" } : { sideA: "", sideB: "" },
     };
@@ -59,13 +59,25 @@ const ScheduleInput = ({ teams, players }) => {
     setGameSlots(gameSlots.filter((_, i) => i !== index));
   };
 
-  const updateGameSlotField = (index, field, value) => {
-    setGameSlots(
-      gameSlots.map((slot, i) =>
-        i === index ? { ...slot, [field]: value } : slot
-      )
-    );
-  };
+    const updateGameSlotField = (index, field, value) => {
+        let myGameSlots = gameSlots.map((slot, i) => {
+            // console.log(index);
+            // console.log(i);
+            // console.log(slot);
+            console.log({ ...slot, [field]: value });
+            return i === index ? { ...slot, [field]: value } : slot
+        });
+        console.log(myGameSlots);
+        setGameSlots(
+            myGameSlots
+            
+        );
+        console.log(gameSlots);
+    };
+
+//     useEffect(() => {
+//   console.log("Updated gameSlots:", gameSlots);
+// }, [gameSlots]);
 
   const updateParticipant = (index, side, value, subIndex = null) => {
     setGameSlots(
@@ -121,7 +133,7 @@ const ScheduleInput = ({ teams, players }) => {
         Plan and manage games for Jam. Add slots for each ground, assign teams/players, and detect conflicts instantly!
       </p>
       <div className="day-selector">
-        <label className="sport-label">Sport:</label>
+        {/* <label className="sport-label">Sport:</label> */}
         <SportSelector selectedSport={selectedSport} onSelectSport={setSelectedSport} />
         <label className="day-label">Day:</label>
         <select

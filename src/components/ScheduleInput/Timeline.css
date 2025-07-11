@@ -1,4 +1,4 @@
-/* Timeline.css - Add the new class to your CSS file */
+/* Timeline.css */
 .timeline-container {
   padding: 16px 0;
   width: 100%;
@@ -10,9 +10,9 @@
 .timeline-track {
   position: relative;
   width: 100%;
-  overflow-x: auto; /* Allows horizontal scrolling if content exceeds width */
-  padding-top: 32px; /* Space for the ruler */
-  min-height: 120px; /* Ensure some height for the timeline */
+  overflow-x: auto;
+  padding-top: 32px;
+  min-height: 120px;
   background: linear-gradient(180deg, #f9fafb 0%, #e5e7eb 100%);
   border: 1px solid #d1d5db;
   border-radius: 8px;
@@ -30,7 +30,7 @@
   align-items: flex-end;
   background: #fff;
   z-index: 2;
-  border-bottom: 1px solid #e0e0e0; /* Add a subtle border */
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .timeline-ruler-hour-mark {
@@ -39,7 +39,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-shrink: 0; /* Prevent ruler marks from shrinking */
+  flex-shrink: 0;
 }
 
 .timeline-ruler-line {
@@ -60,7 +60,7 @@
 
 .timeline-items {
   position: relative;
-  min-height: 80px; /* Height for the game slots */
+  min-height: 80px;
 }
 
 .timeline-item {
@@ -75,19 +75,17 @@
   box-sizing: border-box;
   border-radius: 8px;
   background: #fff;
-  /* Default box-shadow and border will be overridden by .overlap if needed */
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   border: none;
-  transition: box-shadow 0.2s ease-in-out, border 0.2s ease-in-out; /* Smooth transition for overlap highlight */
+  transition: box-shadow 0.2s ease-in-out, border 0.2s ease-in-out;
 }
 
-/* This content will not start a drag */
 .non-draggable-content {
   width: 100%;
 }
 
 .timeline-item.overlap {
-  box-shadow: 0 0 0 3px #ef4444; /* Red border effect for overlap */
+  box-shadow: 0 0 0 3px #ef4444;
   border: 2px solid #ef4444;
 }
 
@@ -95,7 +93,7 @@
   font-weight: bold;
   font-size: 1.05em;
   margin-bottom: 2px;
-  cursor: grab; /* Indicate that this area is draggable */
+  cursor: grab;
 }
 
 .timeline-item-sport {

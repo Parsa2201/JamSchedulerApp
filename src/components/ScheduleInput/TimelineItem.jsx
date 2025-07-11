@@ -27,6 +27,8 @@ const TimelineItem = ({
   selectedSport,
 }) => {
   const positionX = isBeingDragged ? dragInfo.x : x;
+  const effectiveHasOverlap = isBeingDragged ? dragInfo.tempHasOverlap : hasOverlap;
+
   return (
     <Rnd
       key={globalIndex}
@@ -39,17 +41,18 @@ const TimelineItem = ({
       bounds="parent"
       enableResizing={{ left: true, right: true, top: false, bottom: false, topLeft: false, topRight: false, bottomLeft: false, bottomRight: false }}
       dragAxis="x"
-      grid={[responsiveScale * slotDurationMins, 1]}
+      dragGrid={[responsiveScale * slotDurationMins, 1]}
+      resizeGrid={[responsiveScale * slotDurationMins, 1]}
       minWidth={responsiveScale * slotDurationMins}
       cancel=".non-draggable-content"
     >
       <div
-        className={`timeline-item${hasOverlap ? ' overlap' : ''}`}
+        className={`timeline-item${effectiveHasOverlap ? ' overlap' : ''}`}
         style={{
-          boxShadow: hasOverlap ? '0 0 0 3px #ef4444' : '0 2px 6px rgba(0,0,0,0.1)',
-          border: hasOverlap ? '2px solid #ef4444' : 'none',
+          boxShadow: effectiveHasOverlap ? '0 0 0 3px #ef4444' : '0 2px 6px rgba(0,0,0,0.1)',
+          border: effectiveHasOverlap ? '2px solid #ef4444' : 'none',
         }}
-        title={hasOverlap ? 'Conflict: Overlapping slot!' : 'Game slot'}
+        title={effectiveHasOverlap ? 'Conflict: Overlapping slot!' : 'Game slot'}
       >
         <div className="timeline-item-time">{slot.startTime} - {slot.endTime}</div>
         <div className="timeline-item-sport">{selectedSport}</div>
@@ -65,7 +68,7 @@ const TimelineItem = ({
             selectedSport={selectedSport}
           />
         </div>
-        {hasOverlap && (
+        {effectiveHasOverlap && (
           <span className="timeline-item-conflict-indicator">
             Conflict!
           </span>
@@ -75,4 +78,4 @@ const TimelineItem = ({
   );
 };
 
-export default TimelineItem;
+export default React.memo(TimelineItem);
