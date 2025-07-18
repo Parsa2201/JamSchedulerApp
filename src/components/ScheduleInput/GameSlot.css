@@ -1,42 +1,74 @@
-/* GameSlot.css - moved styles from GameSlot.jsx */
+/* GameSlot.css */
+
 .game-slot-content {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
+.participant-group,
+.doubles-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.participant-column,
+.team-column,
+.side-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  background: #f3f4f6;
-  border-radius: 8px;
-  padding: 10px 12px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  flex: 1;
+  min-width: 140px;
 }
 
-.time-display {
+.participant-label,
+.team-label {
   font-weight: bold;
-  color: #2563eb;
-  font-size: 1.05em;
-  margin-bottom: 2px;
+  margin-bottom: 0.3rem;
 }
 
-.sport-display {
-  font-size: 0.95em;
-  color: #1a1a1a;
-  margin-bottom: 2px;
-  font-weight: 500;
+.custom-select {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.compact {
+  font-size: 0.9rem;
 }
 
 .remove-button {
-  align-self: flex-end;
-  background: #ef4444;
-  color: #fff;
-  border-radius: 6px;
+  background: #e74c3c;
+  color: white;
   border: none;
-  padding: 4px 10px;
-  font-weight: bold;
-  font-size: 1em;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
   cursor: pointer;
-  margin-top: 6px;
+  font-size: 0.8rem;
   transition: background 0.2s;
 }
 
 .remove-button:hover {
-  background: #dc2626;
+  background: #c0392b;
+}
+
+.mixed-group {
+  margin-bottom: 1rem;
+}
+
+.mixed-radio-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mixed-radio-label {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
